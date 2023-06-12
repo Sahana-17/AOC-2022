@@ -1,6 +1,6 @@
 #AOC 2022 - Day 1 
 
-#Finding total calories 
+#Finding total calories carried by Elves
 
 #Part 1 Answer : 73211
 #Part 2 Answer : 213958
