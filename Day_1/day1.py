@@ -2,6 +2,9 @@
 
 #Finding total calories 
 
+#Part 1 Answer : 73211
+#Part 2 Answer : 213958
+
 import os
 
 file_path = os.path.join(os.path.dirname('__file__'), "day1.in")
