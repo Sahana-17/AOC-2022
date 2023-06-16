@@ -1,8 +1,9 @@
 #AOC 2022 - Day 4
 
-#Finding pair within another pair 
+#Finding pair within another pair + overlaps
 
 #Part 1 Answer : 540
+#Part 2 Answer : 872
 
 import os
 
@@ -11,6 +12,7 @@ file_path = os.path.join(os.path.dirname('__file__'), "day4.in")
 with open(file_path) as file:
 
     count = 0
+    range_count = 0
     
     for line in file:
         line = line.strip()
@@ -35,9 +37,20 @@ with open(file_path) as file:
 
         if (numbers[0] == numbers[2]) and (numbers[1] == numbers[3]):
                 count -= 1
+                
+        overlap = False
+        for i in range(numbers[0], numbers[1]+1):
+            for j in range(numbers[2], numbers[3]+1):
+                if i == j:
+                    overlap  = True
+                    
+            if overlap == True:
+                range_count += 1
+                break
 
-        
-    print("Total Pairs : ", count)
+    print("Total Pairs : ", count)        
+    print("Range Count : ", range_count)
+
 
 
 file.close()
