@@ -3,6 +3,7 @@
 #Moving stacks
 
 #Part 1 Answer : JRVNHHCSJ
+#Part 2 Answer : GNFBSBJLH
 
 import os
 
@@ -19,6 +20,8 @@ list8 = ['R', 'J', 'S']
 list9 = ['M', 'V', 'N', 'B', 'R', 'S', 'G', 'L']
 
 with open(file_path) as file:
+
+    part = int(input("Enter part (1 or 2) : "))
 
     for line in file:
         line = line.strip()
@@ -39,17 +42,48 @@ with open(file_path) as file:
             numbers.append(int(current_num))
 
         
-        for i in range(numbers[0]):
+        if part == 1:
+        
 
-            from_list = "list" + str(numbers[1])
-            sample_list = globals()[from_list]
-            element = sample_list.pop(0)
+            for i in range(numbers[0]):
 
-            to_list = "list" + str(numbers[2])
-            sample_list = globals()[to_list]
-            sample_list.insert(0, element)
+                from_list = "list" + str(numbers[1])
+                sample_list = globals()[from_list]
+                element = sample_list.pop(0)
+
+                to_list = "list" + str(numbers[2])
+                sample_list = globals()[to_list]
+                sample_list.insert(0, element)
+
+        if part == 2:
+
+            if numbers[0] > 1 :
+ 
+                new_list = []
+
+                for i in range(numbers[0]):
+                    from_list = "list" + str(numbers[1])
+                    sample_list = globals()[from_list]
+                    element = sample_list.pop(0)
+
+                    new_list.append(element)
+
+                to_list = "list" + str(numbers[2])
+                sample_list = globals()[to_list]
+                sample_list[:0] = new_list
+
+            else:
+
+                from_list = "list" + str(numbers[1])
+                sample_list = globals()[from_list]
+                element = sample_list.pop(0)
+
+                to_list = "list" + str(numbers[2])
+                sample_list = globals()[to_list]
+                sample_list.insert(0, element)
 
 
 letter_message = list1[0] + list2[0] + list3[0] + list4[0] + list5[0] + list6[0] + list7[0] + list8[0] + list9[0]
+
 
 print("Message : ", letter_message)
