@@ -3,6 +3,8 @@
 #Dijkstra to find lowest possible path
 
 #Part 1 Answer : 490
+#Part 2 Answer : 488
+
 import os
 import pprint
 from collections import deque
@@ -72,7 +74,17 @@ grid[endx][endy] = 'z'
 
 todo.append((startx, starty, 0))
 
-print(get_shortest_path())
+
+print("Part 1 : ", get_shortest_path())
+
+todo = deque()
+
+for i in range(rows):
+        for j in range(columns):
+            if grid[i][j] == 'a':
+                todo.append((i,j,0)) 
+
+print("Part 2 : ", get_shortest_path())
 
 
 
