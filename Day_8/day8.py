@@ -3,6 +3,7 @@
 #Finding visible trees in a grid
 
 #Part 1 Answer : 1823
+#Part 2 Answer : 211680
 
 import os
 
@@ -17,7 +18,7 @@ check_list = [0,len(grid)-1]
 rows = len(grid)
 columns = len(grid[0])
 
-def check_visibility():
+def part1():
 
     visible = 0
     
@@ -37,5 +38,44 @@ def check_visibility():
 
     return visible
 
+def part2():
+    max_trees = 0
+   
+    for i in range(rows):
+        for j in range(columns):
 
-print("Visible Trees :", check_visibility())
+            if i not in check_list and j not in check_list:
+                right_max = float('inf')
+                for k in range(j + 1, len(grid)):
+                    if grid[i][k] >= grid[i][j]:
+                        right_max = min(right_max, k - j)
+                    else:
+                        right_max = min(right_max, len(grid) - j - 1)
+
+                left_max = float('inf')
+                for k in range(j - 1, -1, -1):
+                    if grid[i][k] >= grid[i][j]:
+                        left_max = min(left_max, j - k)
+                    else:
+                        left_max = min(left_max, j)
+
+                down_max = float('inf')
+                for k in range(i + 1, len(grid)):
+                    if grid[k][j] >= grid[i][j]:
+                        down_max = min(down_max, k - i)
+                    else:
+                        down_max = min(down_max, len(grid) - i - 1)
+
+                up_max = float('inf')
+                for k in range(i - 1, -1, -1):
+                    if grid[k][j] >= grid[i][j]:
+                        up_max = min(up_max, i - k)
+                    else:
+                        up_max = min(up_max, i)
+
+                max_trees = max(max_trees, right_max * left_max * down_max * up_max)
+
+    return max_trees
+
+print("Visible Trees :", part1())
+print("Max Trees :", part2())
