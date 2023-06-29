@@ -1,3 +1,9 @@
+#AOC 2022 - Day 21
+
+#Finding number yelled by root monkey
+
+#Part 1 Answer - 124765768589550
+
 import os
 
 def calculate_root(operation, monkeys):
